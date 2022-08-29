@@ -3,11 +3,11 @@ const Todo = require('../Database/todos')
 async function crateTodo ( req,res ) {
     const { body } = req.body
   console.log(body)
-    let tododata = await Post.create(body)
-    console.log(a)
+    let tododatas = await Todo.create(body)
+    console.log(tododatas)
 
     return res.send({
-        data:tododata
+        data:tododatas
     })
 }
 

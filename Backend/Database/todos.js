@@ -1,7 +1,7 @@
 const mongoose = require ("mongoose")
 const user = require("./user")
 
-const postSchema = new mongoose.Schema({
+const todoSchema = new mongoose.Schema({
 title : String,
 status: Boolean,
 lable:String,
@@ -13,6 +13,6 @@ user:{
     timestamps:true
 })
 
-const todo = mongoose.model("post",postSchema)
+const todo = mongoose.model("todo",todoSchema)
 
 module.exports = todo
