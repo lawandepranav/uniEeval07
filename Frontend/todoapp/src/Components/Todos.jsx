@@ -5,6 +5,9 @@ import { useState } from 'react'
 const Todo = () => {
 
     const [data,setData] = useState([])
+    const [title,setTitle] = useState('')
+    const [status,setStatus]=useState()
+    const [lable, setLable]=useState('')
 
     async function getData (){
         try {
@@ -16,6 +19,10 @@ const Todo = () => {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const handleAdd=()=>{
+     
     }
     const handleDelete=()=>{
      
@@ -32,6 +39,13 @@ const Todo = () => {
   return (
    <>
 <div style={{}}>
+    <div>
+    <input type="text" placeholder='Title' onChange={(e)=>setTitle(e.target.value)} />
+      <input type="checkbox" placeholder='Status' onChange={(e)=>setStatus(e.target.value)} />
+      <input type="text" placeholder='Lable' onChange={(e)=>setLable(e.target.value)} />
+      <button onClick={()=>handleAdd()}>Add Todo</button>
+    </div>
+    <div>
    {
     data.map((ele)=>{
         console.log(ele)
@@ -44,7 +58,7 @@ const Todo = () => {
             </>
         )
     })
-   }
+   }</div>
    </div>
    </>
   )
