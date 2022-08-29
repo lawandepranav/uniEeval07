@@ -7,15 +7,6 @@ async function registerUser ( req,res ) {
     let { userbody } = req.body
     console.log(userbody)
 
-    let existingUser = await user.findOne({
-        email:userbody.email
-    })
-    console.log(existingUser)
-    if(existingUser){
-        return res.status(500).send({
-            message:"Bad Request User already exists"
-        })
-    }
     let userDoc = await user.create(userbody)
     return res.send({
         data : userDoc
@@ -42,7 +33,7 @@ async function loginUser ( req,res ){
         },SECRET)
         return res.send({
             data:{
-                token:encrypted_Token
+                login:'successfull'
             }
         })
         }else{
