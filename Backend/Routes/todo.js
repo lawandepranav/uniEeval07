@@ -3,7 +3,8 @@ const {
     crateTodo,
     updateTodo,
     deleteTodo,
-    getAllTodo
+    getAllTodo,
+    showTodo
 }  = require('../Handlers/todo')
 
 
@@ -14,5 +15,6 @@ todoRouter.get('/todos',getAllTodo)
 todoRouter.post('/todos',crateTodo)
 todoRouter.patch('/todos/:id',updateTodo)
 todoRouter.delete('/todos/:id',deleteTodo)
+todoRouter.get('/todos/alltodos',showTodo)
 
 module.exports = todoRouter
