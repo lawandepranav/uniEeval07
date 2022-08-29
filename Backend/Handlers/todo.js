@@ -1,12 +1,6 @@
 const Todo = require('../Database/todos')
 
-let todoss=[]
 
-async function showTodo ( req,res ) {
-    return res.send({
-        todoss
-    })
-}
 
 async function crateTodo ( req,res ) {
     const { body } = req.body
@@ -14,28 +8,20 @@ async function crateTodo ( req,res ) {
     let tododatas = await Todo.create(body)
     console.log(tododatas)
 
-     todoss.push(tododatas)
-
     return res.send({
-        data:tododatas
+        tododatas
     })
 }
 
 async function updateTodo ( req,res ) {
     const{ id } = req.params;
     const{ todobody:todoData } = req.body;
-    console.log(id)
-     console.log(todoData)
-   let todo = await Todo.find({_id:id})
- console.log(todo)
-todo=todoData
-console.log(todo)
  
+   let todo = await Todo.find({_id:id})
+
    await todo.save(todo);
  
-   return res.send({
-     data:todo
-   })
+   return res.send("Updated Successfully")
  }
 
  async function deleteTodo ( req,res ){
@@ -60,6 +46,5 @@ module.exports = {
     crateTodo,
     updateTodo,
     deleteTodo,
-    getAllTodo,
-    showTodo
+    getAllTodo
 }

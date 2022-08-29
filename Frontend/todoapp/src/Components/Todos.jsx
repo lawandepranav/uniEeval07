@@ -2,40 +2,52 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
-const Post = () => {
+const Todo = () => {
 
     const [data,setData] = useState([])
 
     async function getData (){
         try {
-            let res = await fetch ('http://localhost:3000/posts')
-            let dat = await res.json()
+            let res = await fetch ('http://localhost:3030/todos')
+            let result = await res.json()
             // console.log(data)
 
-            setData(dat.data)
+            setData(result.data)
         } catch (error) {
             console.log(error)
         }
     }
+    const handleDelete=()=>{
+     
+    }
+
+    const handleUpdate=()=>{
+     
+    }
+
     console.log(data)
     useEffect(()=>{
         getData()
     },[])
   return (
    <>
+<div style={{}}>
    {
     data.map((ele)=>{
         console.log(ele)
         return(
             <>
-            <p>{ele.title}</p>
-            <p>{ele.content}</p>
+            <h4>{ele.createdAt}</h4>
+            <h4>{ele.updatedAt}</h4>
+            <button onClick={()=>handleDelete()}>Delete</button>
+            <button onClick={()=>handleUpdate()}>Update</button>
             </>
         )
     })
    }
+   </div>
    </>
   )
 }
 
-export default Post
+export default Todo
