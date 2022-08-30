@@ -45,8 +45,10 @@ const Todo = () => {
           
         
     }
-    const handleDelete=()=>{
-     
+    const handleDelete=(itemId)=>{   
+
+   
+
     }
 
     const handleUpdate=()=>{
@@ -76,7 +78,7 @@ const Todo = () => {
             <h4>{ele.updatedAt}</h4>
             <h4>{ele._id}</h4>
           
-            <button onClick={()=>handleDelete()}>Delete</button>
+            <button onClick={()=>{handleDelete(ele.id)}}>Delete</button>
             <button onClick={()=>handleUpdate()}>Update</button>
             </>
         )
